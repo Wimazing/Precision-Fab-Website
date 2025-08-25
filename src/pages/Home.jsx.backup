@@ -1,0 +1,256 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { ArrowRight, Upload, Zap, Shield, Award, Users } from 'lucide-react'
+import heroImage from '../assets/cad-design-hero.jpg'
+import cadModelingImage from '../assets/cad-modeling.png'
+import printingProcessImage from '../assets/3d-printing-process.png'
+import laserEngravingImage from '../assets/laser-engraving.jpg'
+import laserCuttingImage from '../assets/laser-cutting.jpeg'
+
+const Home = () => {
+  const services = [
+    {
+      title: 'CAD Design',
+      description: 'Professional 3D modeling and engineering design services with 20+ years of experience.',
+      image: cadModelingImage,
+      link: '/services#cad'
+    },
+    {
+      title: '3D Printing',
+      description: 'High-precision 3D printing in various materials including PLA, ABS, and resin.',
+      image: printingProcessImage,
+      link: '/services#3d-printing'
+    },
+    {
+      title: 'Laser Engraving',
+      description: 'Detailed laser engraving on wood, metal, acrylic, and other materials.',
+      image: laserEngravingImage,
+      link: '/services#laser-engraving'
+    },
+    {
+      title: 'Laser Cutting',
+      description: 'Precision laser cutting for prototypes and production parts.',
+      image: laserCuttingImage,
+      link: '/services#laser-cutting'
+    }
+  ]
+
+  const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      company: 'TechStart Inc.',
+      text: 'Exceptional quality and fast turnaround. They brought our prototype to life perfectly.',
+      rating: 5
+    },
+    {
+      name: 'Michael Chen',
+      company: 'Design Studio Pro',
+      text: 'Professional service and transparent pricing. Highly recommend for any fabrication needs.',
+      rating: 5
+    },
+    {
+      name: 'Emma Rodriguez',
+      company: 'Innovation Labs',
+      text: 'The cost estimation tool saved us so much time. Great communication throughout the process.',
+      rating: 5
+    }
+  ]
+
+  const stats = [
+    { number: '500+', label: 'Projects Completed' },
+    { number: '20+', label: 'Years Experience' },
+    { number: '98%', label: 'Client Satisfaction' },
+    { number: '24h', label: 'Average Turnaround' }
+  ]
+
+  return (
+    <div className="pt-16">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-50 to-orange-50 py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                From Concept to{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">
+                  Creation
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 mt-6 leading-relaxed">
+                Precision CAD, 3D Printing & Laser Fabrication services. 
+                Transform your ideas into reality with our state-of-the-art technology and expert craftsmanship.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <Button asChild size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
+                  <Link to="/quote" className="flex items-center space-x-2">
+                    <Upload className="w-5 h-5" />
+                    <span>Upload Your File</span>
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link to="/portfolio" className="flex items-center space-x-2">
+                    <span>View Portfolio</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            <div className="relative">
+              <img 
+                src={heroImage} 
+                alt="CAD Design and 3D Printing" 
+                className="rounded-2xl shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium text-gray-700">Live Production</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-blue-600">{stat.number}</div>
+                <div className="text-gray-600 mt-2">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Preview */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Our Services</h2>
+            <p className="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">
+              From initial concept to final product, we provide comprehensive fabrication services
+              using cutting-edge technology and expert craftsmanship.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
+                <div className="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <Button asChild variant="outline" className="w-full">
+                    <Link to={service.link}>
+                      Learn More
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">How It Works</h2>
+            <p className="text-xl text-gray-600 mt-4">Simple 4-step process from upload to delivery</p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { step: '1', title: 'Upload File', description: 'Upload your STL, DXF, or SVG file', icon: Upload },
+              { step: '2', title: 'Get Quote', description: 'Receive instant price calculation', icon: Zap },
+              { step: '3', title: 'Review & Approve', description: 'Our team reviews and confirms', icon: Shield },
+              { step: '4', title: 'Production & Delivery', description: 'We manufacture and ship your parts', icon: Award }
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <item.icon className="w-8 h-8 text-white" />
+                </div>
+                <div className="text-sm font-medium text-blue-600 mb-2">Step {item.step}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
+              <Link to="/quote">
+                Get Instant Quote
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">What Our Clients Say</h2>
+            <p className="text-xl text-gray-600 mt-4">Trusted by innovators and creators worldwide</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">"{testimonial.text}"</p>
+                <div>
+                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                  <div className="text-sm text-gray-500">{testimonial.company}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-orange-500">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+            Ready to Bring Your Ideas to Life?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Upload your file now and get an instant quote. No commitments, just transparent pricing.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Link to="/quote" className="flex items-center space-x-2">
+                <Upload className="w-5 h-5" />
+                <span>Get Instant Quote</span>
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-blue-600">
+              <Link to="/contact">
+                Contact Us
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default Home
+
